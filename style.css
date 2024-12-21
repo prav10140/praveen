@@ -1,4 +1,4 @@
-/* Global styles */
+/* Global Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -8,7 +8,7 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Header */
+/* Header Styling */
 header {
     background-color: #4CAF50;
     padding: 20px 40px;
@@ -18,6 +18,15 @@ header {
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+nav {
+    margin-top: 10px;
 }
 
 nav a {
@@ -44,15 +53,16 @@ section {
 }
 
 h2 {
-    font-size: 2em;
+    font-size: 2.5em;
     margin-bottom: 20px;
     text-align: center;
     color: #333;
     letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-/* Card Styling */
-.project, .code-folder {
+/* Project Styling */
+.project {
     border: 1px solid #ddd;
     margin: 20px;
     padding: 20px;
@@ -65,53 +75,17 @@ h2 {
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.project:hover, .code-folder:hover {
+.project:hover {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     transform: translateY(-10px);
 }
 
-/* Project/Code Folder Links */
-.project a, .code-folder a {
-    display: inline-block;
-    margin-top: 10px;
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.project a:hover, .code-folder a:hover {
-    color: #45a049;
-    text-decoration: underline;
-    transform: scale(1.05);
-}
-
-/* Code Folder List Styling */
-.code-folder ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.code-folder li {
+.project h3 {
+    font-size: 1.8em;
     margin-bottom: 10px;
-    font-size: 1.1em;
 }
 
-/* Footer */
-footer {
-    background-color: #4CAF50;
-    padding: 20px 0;
-    text-align: center;
-    color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Button Styling */
-button {
+.project button {
     background-color: #4CAF50;
     color: white;
     padding: 12px 30px;
@@ -122,13 +96,73 @@ button {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
+.project button:hover {
     background-color: #45a049;
     transform: scale(1.05);
 }
 
-button:active {
-    background-color: #388e3c;
+.project a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.project a:hover {
+    color: #45a049;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+/* Code Folder Styling */
+.code-folder {
+    border: 1px solid #ddd;
+    margin: 20px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 0.5s forwards, fadeIn 1s ease-in-out;
+}
+
+.code-folder h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.code-folder ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.code-folder li {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.code-folder a {
+    color: #4CAF50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.code-folder a:hover {
+    color: #45a049;
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #4CAF50;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Keyframe Animations */
@@ -169,7 +203,7 @@ button:active {
     }
 
     button {
-        padding: 8px 20px;
+        padding: 10px 20px;
         font-size: 1em;
     }
 }
