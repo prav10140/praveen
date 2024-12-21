@@ -21,13 +21,13 @@ section {
     padding: 20px;
 }
 
-.course {
+.course, .project, .code-folder {
     border: 1px solid #ddd;
     margin: 10px;
     padding: 10px;
 }
 
-.course img {
+.course img, .project img {
     max-width: 100%;
     height: auto;
 }
@@ -36,4 +36,40 @@ footer {
     background-color: #f1f1f1;
     padding: 10px;
     text-align: center;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.project a, .code-folder a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.project a:hover, .code-folder a:hover {
+    text-decoration: underline;
+}
+
+.code-folder h3 {
+    margin-bottom: 5px;
+}
+
+.code-folder ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.code-folder li {
+    margin-bottom: 5px;
 }
