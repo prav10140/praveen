@@ -22,8 +22,8 @@ body {
     text-align: center;
     color: white;
     background-color: #333333; /* Bright black color */
+    background: none; /* Explicitly removes any background image */
 }
-
 .hero-content {
     z-index: 1;
 }
