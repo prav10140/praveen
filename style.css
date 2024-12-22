@@ -20,9 +20,8 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: black;
+    color: white;
     background-color: black; /* Bright black color */
-    background: none; /* Explicitly removes any background image */
 }
 .hero-content {
     z-index: 1;
