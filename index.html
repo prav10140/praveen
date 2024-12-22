@@ -4,11 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My GitHub Page</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP & ScrollMagic Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.7/ScrollMagic.min.js"></script>
+    
+    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay loop muted playsinline class="background-video">
+            <source src="your-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Welcome to My GitHub Page</h1>
+            <p>Explore my projects and codes.</p>
+            <button class="btn-main">Explore Projects</button>
+        </div>
+    </section>
+    
+    <!-- Navigation -->
     <header>
-        <h1>My GitHub Page</h1>
         <nav>
             <a href="#home">Home</a>
             <a href="#projects">Projects</a>
@@ -16,39 +36,28 @@
             <a href="#contact">Contact</a>
         </nav>
     </header>
-    <section id="home">
-        <h2>Welcome to My GitHub Page</h2>
-        <p>Explore my projects, code repositories, and contact me!</p>
-    </section>
-    <section id="all-codes">
-        <h2>All Codes</h2>
-        <div class="code-folder">
-            <h3>Python Projects</h3>
-            <ul>
-                <li><a href="link-to-python-project-1" target="_blank">Python Project 1</a></li>
-                <li><a href="link-to-python-project-2" target="_blank">Python Project 2</a></li>
-                <li><a href="link-to-python-project-3" target="_blank">Python Project 3</a></li>
-            </ul>
-        </div>
-        <div class="code-folder">
-            <h3>JavaScript Projects</h3>
-            <ul>
-                <li><a href="link-to-javascript-project-1" target="_blank">JavaScript Project 1</a></li>
-                <li><a href="link-to-javascript-project-2" target="_blank">JavaScript Project 2</a></li>
-                <li><a href="link-to-javascript-project-3" target="_blank">JavaScript Project 3</a></li>
-            </ul>
-        </div>
-    </section>
+
+    <!-- Projects Section -->
     <section id="projects">
         <h2>My Projects</h2>
-        <div class="project">
-            <h3>My Developed Game: Guess the Number</h3>
-            <p>Here is a game I developed. Try to guess the number the computer picked within 5 attempts!</p>
-            <button onclick="window.open('https://prav10140.github.io/prav_guess/')">Play Now</button>
+        <div class="project-card">
+            <h3>Project 1</h3>
+            <p>Project description goes here.</p>
+            <a href="#">View Project</a>
+        </div>
+        <div class="project-card">
+            <h3>Project 2</h3>
+            <p>Project description goes here.</p>
+            <a href="#">View Project</a>
         </div>
     </section>
+    
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 My GitHub Page</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
