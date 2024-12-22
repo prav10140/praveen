@@ -21,9 +21,7 @@ body {
     justify-content: center;
     text-align: center;
     color: white;
-    background: url('BACKGROUNG.png') no-repeat center center/cover; /* Ensure background image covers the entire section */
-    background-size: cover; /* Ensure the background image stretches to cover the section */
-    background-position: center; /* Center the background image */
+    background-color: #333333; /* Bright black color */
 }
 
 .hero-content {
