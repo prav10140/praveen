@@ -114,162 +114,21 @@ console.log(greet('World'));`;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guess My Number</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(120deg, #1e3c72, #2a5298);
-      color: #fff;
-      overflow: hidden;
-    }
-
-    .game-container {
-      text-align: center;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      animation: fadeIn 1s ease;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    input {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      border: 2px solid #ddd;
-      border-radius: 6px;
-      outline: none;
-      transition: 0.3s;
-    }
-
-    input:focus {
-      border-color: #4caf50;
-      box-shadow: 0 0 10px #4caf50;
-    }
-
-    button {
-      padding: 0.7rem 1.5rem;
-      font-size: 1rem;
-      color: #fff;
-      background: #4caf50;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin: 0.5rem;
-    }
-
-    button:hover {
-      background: #45a049;
-      transform: scale(1.1);
-    }
-
-    button:active {
-      transform: scale(1.05);
-    }
-
-    #feedback {
-      margin-top: 1rem;
-      font-weight: bold;
-      font-size: 1.3rem;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="game-container">
-    <h1>Guess My Number</h1>
-    <p>Think of a number between 1 and 100.</p>
-    <input id="guessInput" type="number" placeholder="Enter your guess..." min="1" max="100">
-    <br>
-    <button id="guessButton">Submit Guess</button>
-    <button id="restartButton" class="hidden">Restart Game</button>
-    <p id="feedback"></p>
-  </div>
-  <script>
-    const guessInput = document.getElementById('guessInput');
-    const guessButton = document.getElementById('guessButton');
-    const restartButton = document.getElementById('restartButton');
-    const feedback = document.getElementById('feedback');
-
-    let targetNumber = Math.floor(Math.random() * 100) + 1;
-    let attempts = 0;
-
-    guessButton.addEventListener('click', () => {
-      const userGuess = Number(guessInput.value);
-      attempts++;
-
-      if (!userGuess || userGuess < 1 || userGuess > 100) {
-        feedback.textContent = 'Please enter a number between 1 and 100.';
-        feedback.style.color = 'orange';
-        return;
-      }
-
-      if (userGuess === targetNumber) {
-        feedback.textContent = `🎉 Correct! You guessed it in ${attempts} tries.`;
-        feedback.style.color = 'orange';
-        endGame();
-      } else if (userGuess > targetNumber) {
-        feedback.textContent = '📉 Too high! Try again.';
-        feedback.style.color = 'red';
-      } else {
-        feedback.textContent = '📈 Too low! Try again.';
-        feedback.style.color = 'red';
-      }
-
-      guessInput.value = '';
-      guessInput.focus();
-    });
-
-    restartButton.addEventListener('click', () => {
-      targetNumber = Math.floor(Math.random() * 100) + 1;
-      attempts = 0;
-      feedback.textContent = '';
-      guessInput.value = '';
-      guessInput.disabled = false;
-      guessButton.disabled = false;
-      restartButton.classList.add('hidden');
-      feedback.textContent = 'Game reset. Try guessing again!';
-      feedback.style.color = 'white';
-    });
-
-    function endGame() {
-      guessInput.disabled = true;
-      guessButton.disabled = true;
-      restartButton.classList.remove('hidden');
-    }
-  </script>
+    <div class="container">
+        <h1>WELCOME!</h1>
+        <h2>GUESS THE NUMBER THAT COMPUTER GUESSED</h2>
+        <input type="number" id="guessInput" placeholder="Enter your guess between 1 to 100">
+        <button onclick="checkGuess()">Submit Guess</button>
+        <p id="feedback"></p>
+        <p id="result"></p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>;
                 break;
