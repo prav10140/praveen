@@ -12,3 +12,32 @@ document.querySelectorAll(".project-card").forEach(function(card) {
         .setTween(card, { opacity: 1, y: 0 })
         .addTo(controller);
 });
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    });
+});
+
+// Highlight active navigation link based on scroll position
+let sections = document.querySelectorAll('section');
+let navLinks = document.querySelectorAll('nav a');
+
+window.addEventListener('scroll', () => {
+    let currentPosition = window.scrollY;
+    sections.forEach((section, index) => {
+        let sectionTop = section.offsetTop;
+        let sectionHeight = section.offsetHeight;
+        
+        if (currentPosition >= sectionTop - sectionHeight / 3 && currentPosition < sectionTop + sectionHeight - sectionHeight / 3) {
+            navLinks[index].classList.add('active');
+        } else {
+            navLinks[index].classList.remove('active');
+        }
+    });
+});
