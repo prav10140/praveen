@@ -21,7 +21,8 @@ body {
     justify-content: center;
     text-align: center;
     color: white;
-    background-color: black; /* Bright black color */
+    background: url('your-image.jpg') no-repeat center center/cover;
+    background-color: #333;
 }
 .hero-content {
     z-index: 1;
@@ -47,11 +48,12 @@ body {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn-main:hover {
     background-color: #e76b00;
+    transform: scale(1.1);
 }
 
 /* Header */
@@ -61,6 +63,12 @@ header {
     position: sticky;
     top: 0;
     z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
 }
 
 nav a {
@@ -83,9 +91,22 @@ nav a:hover {
     text-align: center;
 }
 
-#projects h2 {
-    font-size: 2.5em;
-    margin-bottom: 40px;
+.projects-header h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 20px 20px 0 0;  /* Curved shape for heading */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.projects-category {
+    margin-top: 40px;
+}
+
+.projects-category h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
 .project-card {
@@ -126,7 +147,6 @@ footer {
     padding: 20px 0;
     text-align: center;
     color: white;
-    position: relative;
 }
 
 /* Responsive Design */
@@ -147,5 +167,9 @@ footer {
 
     nav a {
         margin: 0 10px;
+    }
+
+    .projects-header h2 {
+        font-size: 2em;
     }
 }
