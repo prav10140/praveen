@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Display</title>
+    <title>Object Detection Instructions</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
     <style>
         body {
@@ -25,7 +25,6 @@
             padding: 30px;
             border-radius: 10px;
             margin-bottom: 20px;
-            overflow: hidden;
         }
         h2 {
             text-align: center;
@@ -36,17 +35,6 @@
             justify-content: center;
             margin-bottom: 15px;
         }
-        label {
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        select {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
         pre {
             padding: 20px;
             border: 1px solid #ccc;
@@ -54,9 +42,46 @@
             background: #f5f5f5;
             overflow: auto;
             max-height: 500px;
+            white-space: pre-wrap;
         }
-        .language-select-container {
-            margin-bottom: 20px;
+        .instructions {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e7f3ff;
+            border: 1px solid #b3d8ff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+            max-width: 900px;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #0056b3;
+        }
+        .instructions p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .copy-btn {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .copy-btn:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -64,89 +89,107 @@
 
 <div class="viewer-container">
     <h2>Code Viewer</h2>
-    <div class="language-select-container">
-        <label for="language-select">Choose Language: </label>
-        <select id="language-select" onchange="updateLanguage()">
-            <option value="language-python">Python</option>
-            <option value="language-javascript">JavaScript</option>
-            <option value="language-html">HTML</option>
-            <option value="language-css">CSS</option>
-        </select>
-    </div>
     <pre id="code-box" class="language-python"><code class="language-python">
-# Python code example
-def greet(name):
-    return f'Hello, {name}!'
+import cv2
+import numpy as np
+import pyttsx3
+from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input, decode_predictions
 
-print(greet('World'))
+# Initialize the text-to-speech engine
+engine = pyttsx3.init()
+
+# Load MobileNetV2 model pre-trained on ImageNet
+model = MobileNetV2(weights='imagenet')
+
+def say(text):
+    engine.say(text)
+    engine.runAndWait()
+
+def recognize_object():
+    cap = cv2.VideoCapture(0)  # Use the default camera (0)
+    if not cap.isOpened():
+        say("Unable to access the camera.")
+        print("Unable to access the camera.")
+        return
+
+    say("Please hold the object in front of the camera.")
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            continue
+
+        # Display the frame to the user
+        cv2.imshow('Object Recognition', frame)
+
+        # Press 'q' to capture the image and exit
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            print("Capturing image...")
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+
+    # Preprocess the captured frame
+    img = cv2.resize(frame, (224, 224))  # Resize image to 224x224
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert image to RGB
+    img = preprocess_input(np.expand_dims(img, axis=0))  # Preprocess image for MobileNetV2
+
+    # Predict the object in the image
+    preds = model.predict(img)
+    decoded_preds = decode_predictions(preds, top=3)[0]  # Decode the top 3 predictions
+
+    print("Top predictions:")
+    for i, pred in enumerate(decoded_preds):
+        object_name = pred[1]  # Get the object name (e.g., "dog")
+        confidence = pred[2]  # Get the confidence score
+        print(f"{i + 1}. {object_name} with {confidence * 100:.2f}% confidence.")
+        say(f"Prediction {i + 1}: I think this is a {object_name} with {confidence * 100:.2f}% confidence.")
+
+if __name__ == '__main__':
+    print("Starting object detection...")
+    recognize_object()
     </code></pre>
+    <button class="copy-btn" onclick="copyCode()">Copy Code</button>
 </div>
 
+<div class="instructions">
+    <h3>Instructions for Running the Object Detection Code</h3>
+    <p>Follow these steps to set up and run the object detection code on your system:</p>
+    <ul>
+        <li><strong>Install Python:</strong> Ensure you have Python 3.7 or higher installed on your system. Download it from <a href="https://www.python.org" target="_blank">python.org</a> if necessary.</li>
+        <li><strong>Install Required Libraries:</strong> Run the following command in your terminal or command prompt to install the dependencies:
+            <pre>pip install opencv-python-headless numpy pyttsx3 tensorflow</pre>
+        </li>
+        <li><strong>Check Camera Access:</strong> Ensure your webcam or camera is properly connected and accessible by your computer.</li>
+        <li><strong>Run the Code:</strong> Save the code to a file, for example, <code>object_detection.py</code>, and execute it in your terminal or command prompt:
+            <pre>python object_detection.py</pre>
+        </li>
+        <li><strong>Interacting with the Code:</strong>
+            <ul>
+                <li>Hold the object in front of the camera as instructed.</li>
+                <li>Press <code>q</code> on your keyboard to capture an image and process it.</li>
+                <li>The program will display the top 3 predicted objects with their confidence levels.</li>
+            </ul>
+        </li>
+        <li><strong>Exit the Program:</strong> The camera will close automatically after processing the image. If it does not, press <code>Ctrl+C</code> to terminate.</li>
+    </ul>
+    <p>If you encounter any issues, verify your camera permissions and ensure the required libraries are correctly installed.</p>
+</div>
+
+<img src="project1.png" alt="Object Detection Example" />
+
+<!-- Prism.js library and Python language support -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-markup.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-css.min.js"></script>
+
 <script>
-    function updateLanguage() {
-        var language = document.getElementById('language-select').value;
-        var codeBox = document.getElementById('code-box');
-        var codeContent = '';
-
-        switch (language) {
-            case 'language-python':
-                codeContent = `# Python code example
-def greet(name):
-    return f'Hello, {name}!' 
-
-print(greet('World'))`;
-                break;
-            case 'language-javascript':
-                codeContent = `// JavaScript code example
-function greet(name) {
-    return 'Hello, ' + name + '!';
-}
-
-console.log(greet('World'));`;
-                break;
-            case 'language-html':
-                codeContent = `<!-- HTML code example -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess the Number</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>WELCOME!</h1>
-        <h2>GUESS THE NUMBER THAT COMPUTER GUESSED</h2>
-        <input type="number" id="guessInput" placeholder="Enter your guess between 1 to 100">
-        <button onclick="checkGuess()">Submit Guess</button>
-        <p id="feedback"></p>
-        <p id="result"></p>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>;
-                break;
-         case 'language-css':
-                codeContent = `/* CSS code example */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
-h1 {
-    color: #333;
-}`;
-                break;
-        }
-
-        codeBox.className = language;
-        codeBox.innerHTML = '<code class="' + language + '">' + codeContent + '</code>';
-        Prism.highlightElement(codeBox.querySelector('code'));
+    function copyCode() {
+        const code = document.getElementById('code-box').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            alert('Code copied to clipboard!');
+        }, (err) => {
+            alert('Failed to copy code: ' + err);
+        });
     }
 </script>
 
