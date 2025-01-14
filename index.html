@@ -1,74 +1,99 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('header');
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovative Design Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="circle-logo"><img src="C:\Users\ACER\OneDrive\Pictures\Screenshots\Screenshot 2024-09-11 180740.png" alt=""></a>
+            <ul>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    // Smooth scrolling for navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-        });
-    });
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <h1>Welcome to My Creative Space</h1>
+                <p>Explore my projects that blend creativity with functionality</p>
+            </div>
+        </section>
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2>Featured Projects</h2>
+                <div class="project-grid">
+                    <div class="project">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Project 1">
+                        <div class="project-info">
+                            <h3>OBJECT DETECTION</h3>
+                            <p>Identifying and classifying objects in real-time</p>
+                            <a href="project1.html" class="link-text">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Project 2">
+                        <div class="project-info">
+                            <h3>OrderMate</h3>
+                            <p>Making canteen food ordering faster and more convenient for students</p>
+                            <a href="anotherpage.html" class="link-text">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80" alt="Project 3">
+                        <div class="project-info">
+                            <h3>MiniCode Lab</h3>
+                            <p>Suggests a place to experiment and solve small coding problems</p>
+                            <a href="anotherpage.html" class="link-text">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    // Highlight active navigation link on scroll
-    const debounce = (func, delay = 100) => {
-        let timeout;
-        return (...args) => {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func(...args), delay);
-        };
-    };
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>We are a passionate team of designers and developers, dedicated to creating exceptional digital experiences. Our approach combines cutting-edge technology with timeless design principles to deliver solutions that not only look stunning but also perform flawlessly.</p>
+            </div>
+        </section>
 
-    window.addEventListener('scroll', debounce(() => {
-        let current = '';
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <div class="social-links">
+                    <a href="https://twitter.com/yourprofile" target="_blank" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/yourprofile" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:your-email@example.com" class="social-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:+1234567890" class="social-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                current = section.getAttribute('id');
-            }
-        });
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Design Studio. All rights reserved.</p>
+        </div>
+    </footer>
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').slice(1) === current) {
-                link.classList.add('active');
-            }
-        });
-
-        // Add shadow to header on scroll
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    }));
-
-    // Fade in elements on scroll
-    const fadeInElements = document.querySelectorAll('.project, .about p, .contact form');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            }
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target);
-        });
-    }, { threshold: 0.3 });
-
-    fadeInElements.forEach(element => {
-        observer.observe(element);
-    });
-
-    // Form submission logic
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Form submitted successfully!');
-        contactForm.reset();
-    });
-});
+    <script src="script.js"></script>
+</body>
+</html>
