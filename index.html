@@ -1,83 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- GSAP & ScrollMagic Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.7/ScrollMagic.min.js"></script>
-    
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <header>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="#codes">All Codes</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to My GitHub Page</h1>
-            <p>Explore my projects and codes.</p>
-            <button class="btn-main">Explore Projects</button>
-        </div>
-    </section>
+    // Smooth scrolling for navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="projects-header">
-            <h2>My Projects</h2>
-        </div>
+    // Highlight active navigation link on scroll
+    const debounce = (func, delay = 100) => {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func(...args), delay);
+        };
+    };
 
-        <div class="projects-category">
-            <h3>Featured Projects</h3>
-            <div class="project-card">
-                <h3>OBJECT DETECTION</h3>
-                <p>Project description goes here.</p>
-                <a href="project1.html">View Code</a>
-            </div>
-            <div class="project-card">
-                <h3>Project 2</h3>
-                <p>Project description goes here.</p>
-                <a href="project2.html">View Project</a>
-            </div>
-        </div>
+    window.addEventListener('scroll', debounce(() => {
+        let current = '';
 
-        <div class="projects-category">
-            <h3>Web Development</h3>
-            <div class="project-card">
-                <h3>Project 3</h3>
-                <p>Project description goes here.</p>
-                <a href="project3.html">View Code</a>
-            </div>
-        </div>
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute('id');
+            }
+        });
 
-        <div class="projects-category">
-            <h3>Machine Learning</h3>
-            <div class="project-card">
-                <h3>Project 4</h3>
-                <p>Project description goes here.</p>
-                <a href="project4.html">View Project</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 My GitHub Page</p>
-    </footer>
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').slice(1) === current) {
+                link.classList.add('active');
+            }
+        });
 
-    <script src="script.js"></script>
-</body>
-</html>
+        // Add shadow to header on scroll
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }));
+
+    // Fade in elements on scroll
+    const fadeInElements = document.querySelectorAll('.project, .about p, .contact form');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            }
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.3 });
+
+    fadeInElements.forEach(element => {
+        observer.observe(element);
+    });
+
+    // Form submission logic
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Form submitted successfully!');
+        contactForm.reset();
+    });
+});
