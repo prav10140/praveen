@@ -1,43 +1,74 @@
-// GSAP animations for hero section
-gsap.from(".hero-content", { opacity: 0, y: 100, duration: 1, ease: "power3.out" });
-gsap.from(".btn-main", { opacity: 0, scale: 0.5, duration: 1, delay: 1, ease: "power3.out" });
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
 
-// ScrollMagic Controller
-var controller = new ScrollMagic.Controller();
-
-// Animate Project Cards on Scroll
-document.querySelectorAll(".project-card").forEach(function(card) {
-    gsap.from(card, { opacity: 0, y: 100, duration: 1 });
-    new ScrollMagic.Scene({ triggerElement: card, triggerHook: 0.9 })
-        .setTween(card, { opacity: 1, y: 0 })
-        .addTo(controller);
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+    // Smooth scrolling for navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            targetSection.scrollIntoView({ behavior: 'smooth' });
         });
     });
-});
 
-// Highlight active navigation link based on scroll position
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('nav a');
+    // Highlight active navigation link on scroll
+    const debounce = (func, delay = 100) => {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func(...args), delay);
+        };
+    };
 
-window.addEventListener('scroll', () => {
-    let currentPosition = window.scrollY;
-    sections.forEach((section, index) => {
-        let sectionTop = section.offsetTop;
-        let sectionHeight = section.offsetHeight;
-        
-        if (currentPosition >= sectionTop - sectionHeight / 3 && currentPosition < sectionTop + sectionHeight - sectionHeight / 3) {
-            navLinks[index].classList.add('active');
+    window.addEventListener('scroll', debounce(() => {
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').slice(1) === current) {
+                link.classList.add('active');
+            }
+        });
+
+        // Add shadow to header on scroll
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
         } else {
-            navLinks[index].classList.remove('active');
+            header.classList.remove('scrolled');
         }
+    }));
+
+    // Fade in elements on scroll
+    const fadeInElements = document.querySelectorAll('.project, .about p, .contact form');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            }
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.3 });
+
+    fadeInElements.forEach(element => {
+        observer.observe(element);
+    });
+
+    // Form submission logic
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Form submitted successfully!');
+        contactForm.reset();
     });
 });
