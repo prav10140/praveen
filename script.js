@@ -1,25 +1,24 @@
-// Initialize when DOM is fully loaded
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize 3D background for hero section
+   
     initVantaBackground();
     
-    // Initialize tilt effect for project cards
+    
     initTiltEffect();
     
-    // Initialize scroll animations
+    
     initScrollAnimations();
     
-    // Initialize mobile menu
+    
     initMobileMenu();
     
-    // Initialize navbar scroll effect
+    
     initNavbarScroll();
     
-    // Smooth scroll for anchor links
     initSmoothScroll();
 });
 
-// Initialize 3D Net background for hero section
+
 function initVantaBackground() {
     if (typeof VANTA !== 'undefined') {
         VANTA.NET({
@@ -42,7 +41,7 @@ function initVantaBackground() {
     }
 }
 
-// Initialize tilt effect for project cards
+
 function initTiltEffect() {
     if (typeof VanillaTilt !== 'undefined') {
         VanillaTilt.init(document.querySelectorAll(".project-card"), {
@@ -56,13 +55,13 @@ function initTiltEffect() {
     }
 }
 
-// Initialize scroll animations with GSAP
+
 function initScrollAnimations() {
-    // Register ScrollTrigger plugin
+    
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
         
-        // Animate section titles
+        
         gsap.utils.toArray('.section-title').forEach(title => {
             gsap.from(title, {
                 y: 50,
@@ -76,7 +75,7 @@ function initScrollAnimations() {
             });
         });
         
-        // Animate project cards
+        
         gsap.utils.toArray('.project-card').forEach((card, i) => {
             gsap.from(card, {
                 y: 100,
@@ -91,7 +90,7 @@ function initScrollAnimations() {
             });
         });
         
-        // Animate about section
+        
         gsap.from(".about-image-wrapper", {
             x: -50,
             opacity: 0,
@@ -114,7 +113,7 @@ function initScrollAnimations() {
             },
           })
       
-          // Animate skills
+         
           gsap.utils.toArray(".skill").forEach((skill, i) => {
             gsap.from(skill, {
               scale: 0.5,
@@ -129,7 +128,7 @@ function initScrollAnimations() {
             })
           })
       
-        // Animate contact section
+        
         gsap.from('.contact-info', {
             x: -50,
             opacity: 0,
@@ -158,18 +157,18 @@ function initScrollAnimations() {
     }
 }
 
-// Initialize mobile menu functionality
+
 function initMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     
     hamburger.addEventListener('click', () => {
-        // Toggle active class
+       
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
     });
     
-    // Close mobile menu when clicking on a link
+    
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
@@ -178,7 +177,7 @@ function initMobileMenu() {
     });
 }
 
-// Initialize navbar scroll effect
+
 function initNavbarScroll() {
     const navbar = document.querySelector('.navbar');
     
@@ -191,7 +190,7 @@ function initNavbarScroll() {
     });
 }
 
-// Initialize smooth scroll for anchor links
+
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -201,13 +200,13 @@ function initSmoothScroll() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                // Get the navbar height for offset
+                
                 const navbarHeight = document.querySelector('.navbar').offsetHeight;
                 
-                // Calculate the position to scroll to
+                
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
                 
-                // Smooth scroll to target
+                
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -217,7 +216,7 @@ function initSmoothScroll() {
     });
 }
 
-// Add 3D hover effect to CTA button
+
 const ctaButton = document.querySelector('.cta-button');
 if (ctaButton) {
     ctaButton.addEventListener('mousemove', (e) => {
@@ -238,7 +237,7 @@ if (ctaButton) {
         ctaButton.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
     });
     
-    // Scroll to projects section when clicking the CTA button
+    
     ctaButton.addEventListener('click', () => {
         const projectsSection = document.getElementById('projects');
         const navbarHeight = document.querySelector('.navbar').offsetHeight;
