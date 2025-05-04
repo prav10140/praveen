@@ -1,4 +1,4 @@
-/* Base Styles */
+
 :root {
     --primary-color: #6c63ff;
     --secondary-color: #4a40e2;
@@ -63,7 +63,7 @@ section {
     border-radius: 2px;
 }
 
-/* Navbar Styles */
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -134,7 +134,6 @@ section {
     transition: all 0.3s ease;
 }
 
-/* Hero Section Styles */
 .hero {
     height: 100vh;
     display: flex;
@@ -214,7 +213,6 @@ section {
     box-shadow: 0 15px 30px rgba(108, 99, 255, 0.4);
 }
 
-/* Projects Section Styles */
 .projects {
     background: linear-gradient(to bottom, var(--dark-color), #1a1a2e);
     padding: 100px 5%;
@@ -301,7 +299,7 @@ section {
     transform: translateZ(35px) scale(1.05);
 }
 
-/* About Section Styles */
+
 .about {
     background: linear-gradient(to bottom, #1a1a2e, var(--dark-color));
     padding: 100px 5%;
@@ -490,7 +488,7 @@ section {
   }
   
 
-/* Contact Section Styles */
+
 .contact {
     background: linear-gradient(to bottom, var(--dark-color), #1a1a2e);
     padding: 100px 5%;
@@ -615,7 +613,7 @@ section {
     box-shadow: 0 15px 30px rgba(108, 99, 255, 0.4);
 }
 
-/* Footer Styles */
+
 footer {
     background: var(--dark-color);
     padding: 30px 0;
@@ -623,7 +621,7 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Animations */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -639,7 +637,7 @@ footer {
     animation: fadeIn 1s ease forwards;
 }
 
-/* 3D Path Background */
+
 .path-bg {
     position: absolute;
     top: 0;
@@ -650,7 +648,6 @@ footer {
     opacity: 0.2;
 }
 
-/* Responsive Styles */
 @media screen and (max-width: 992px) {
     .hero-content h1 {
         font-size: 3rem;
