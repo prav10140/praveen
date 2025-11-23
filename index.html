@@ -3,253 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="Screenshot 2025-02-06 152405.png">
-    <title>P R A V E E N '</title>
-    <link rel="stylesheet" href="style.css">
+    <title>PRAVEEN PATEL // ECE</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.0/dist/vanilla-tilt.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-   
+
+    <div class="noise-overlay"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+
     <nav class="navbar">
-        <div class="logo">
-            <h2>P R A V E E N '</h2>
+        <div class="nav-left">
+            <span class="logo">[ PRAVEEN_PATEL ]</span>
         </div>
-        <div class="nav-links">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#projects" class="hover-target">Projects</a></li>
+                <li><a href="#about" class="hover-target">PROFILE</a></li>
+                <li><a href="#contact" class="hover-target">CONTACT</a></li>
             </ul>
         </div>
-        <div class="hamburger">
-            <div class="bar"></div>
+        <div class="hamburger hover-target">
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
     </nav>
 
-    
-    <section id="home" class="hero">
-        <div id="hero-bg"></div>
-        <div class="hero-content">
-            <h1 class="floating-text">Hello, I'm <span>Praveen Patel</span></h1>
-            <p class="floating-text">Electronics & Communication Engineering Student</p>
-            <button class="cta-button floating-text">View Projects</button>
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-meta">
+                    <p></p>
+                    <p>ECE STUDENT</p>
+                    <p>VIT Bhopal University</p>
+                </div>
+                <div class="hero-title">
+                    <h1 class="reveal">My<br>Dimension</h1>
+                </div>
+                <div class="hero-desc">
+                    <p>Bridging the gap between hardware logic <br> and user interface design.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <span>PYTHON &nbsp;—&nbsp; IOT &nbsp;—&nbsp; REACT &nbsp;—&nbsp; C++ &nbsp;—&nbsp; MATLAB &nbsp;—&nbsp; ARDUINO &nbsp;—&nbsp; PYTHON &nbsp;—&nbsp; IOT &nbsp;—&nbsp; REACT &nbsp;—&nbsp; C++ &nbsp;—&nbsp;</span>
+            </div>
         </div>
     </section>
 
-   
-    <section id="projects" class="projects">
-        <h2 class="section-title">My Projects</h2>
-        <div class="projects-grid">
-            <!-- Project 1 -->
-            <div class="project-card" data-tilt data-tilt-max="10">
-                <div class="project-content">
-                    <h3>OBJECT DETECTION</h3>
-                    <p>Identifying and classifying objects in real-time</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>tensorflow</span>
-                        <span>pyttsx3</span>
-                    </div>
-                    <a href="project1.html" class="project-link">View Project</a>
-                </div>
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-idx">01</span>
+                <h2>SELECTED WORKS</h2>
             </div>
-            
-           
-            <div class="project-card" data-tilt data-tilt-max="10">
-                <div class="project-content">
-                    <h3>TransLingual</h3>
-                    <p>TransLingua instantly translates languages for seamless communication</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>NLP</span>
-                        <span>Google Translate library</span>
-                    </div>
-                    <a href="https://language-transltor-grrl.vercel.app/" class="project-link">View Project</a>
+
+            <div class="project-table">
+                <div class="table-header">
+                    <span>PROJECT NAME</span>
+                    <span>TECH STACK</span>
+                    <span>TYPE</span>
+                    <span>LINK</span>
                 </div>
-            </div>
-            
-            
-            <div class="project-card" data-tilt data-tilt-max="10">
-                <div class="project-content">
-                    <h3>MiniCode Lab</h3>
-                    <p>Suggests a place to experiment and solve small coding problems</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
+
+                <div class="table-row hover-target">
+                    <div class="col-name">
+                        <h3>Object Detection</h3>
+                        <p>Identifying and classifying objects in real-time</p>
+                        <div class="hover-reveal-img" style="background-image: url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2070&auto=format&fit=crop');"></div>
                     </div>
-                    <a href="https://prav10140.github.io/MINICODE_LAB/" class="project-link">View Project</a>
+                    <div class="col-tech">
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                    </div>
+                    <div class="col-type">AI / ML</div>
+                    <div class="col-link"><a href="project1.html"><i class="fas fa-arrow-right"></i></a></div>
                 </div>
-            </div>
-            
-            
-            <div class="project-card" data-tilt data-tilt-max="10">
-                <div class="project-content">
-                    <h3>Checkmate</h3>
-                    <p>Think. Plan. Win.</p>
-                    <div class="project-tags">
+
+                <div class="table-row hover-target">
+                    <div class="col-name">
+                        <h3>TransLingual</h3>
+                        <p>TransLingua instantly translates languages for seamless communication</p>
+                        <div class="hover-reveal-img" style="background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2071&auto=format&fit=crop');"></div>
+                    </div>
+                    <div class="col-tech">
+                        <span class="tag">Python</span>
+                        <span class="tag">NLP</span>
+                    </div>
+                    <div class="col-type">Translation API</div>
+                    <div class="col-link"><a href="https://language-transltor-grrl.vercel.app/"><i class="fas fa-arrow-right"></i></a></div>
+                </div>
+
+                <div class="table-row hover-target">
+                    <div class="col-name">
+                        <h3>MiniCode Lab</h3>
+                        <p>Suggests a place to experiment and solve small coding problems</p>
+                        <div class="hover-reveal-img" style="background-image: url('https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=2031&auto=format&fit=crop');"></div>
+                    </div>
+                    <div class="col-tech">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Python</span>
+                    </div>
+                    <div class="col-type">Education</div>
+                    <div class="col-link"><a href="https://prav10140.github.io/MINICODE_LAB/"><i class="fas fa-arrow-right"></i></a></div>
+                </div>
+
+                <div class="table-row hover-target">
+                    <div class="col-name">
+                        <h3>Checkmate</h3>
+                        <p>Think. Plan. Win.</p>
+                        <div class="hover-reveal-img" style="background-image: url('https://images.unsplash.com/photo-1529699211952-734e80c4d42b?q=80&w=2071&auto=format&fit=crop');"></div>
+                    </div>
+                    <div class="col-tech">
                         <span>Chess Library</span>
-                        <span>flask</span>
-                        <span>request</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">Algorithms</span>
                     </div>
-                    <a href="https://chess-one-lac.vercel.app/" class="project-link">View Project</a>
+                    <div class="col-type">Game Logic</div>
+                    <div class="col-link"><a href="https://chess-one-lac.vercel.app/"><i class="fas fa-arrow-right"></i></a></div>
                 </div>
-            </div>
-            
-            
-            <div class="project-card" data-tilt data-tilt-max="10">
-                <div class="project-content">
-                    <h3>CodeChef C++ Question</h3>
-                    <p>See the solution of codechef question (500-800)-Diffculty level</p>
-                    <div class="project-tags">
-                        <span>Problem-Solving</span>
-                        <span>Step-by-step solutions</span>
-                        <span>Question</span>
-                    </div>
-                    <a href="https://prav10140.github.io/CODECHEF/" class="project-link">View Project</a>
-                </div>
-            </div>
-            
-            
-            <div class="project-card" data-tilt data-tilt-max="10">
-                <div class="project-content">
-                    <h3>ReactNote</h3>
-                    <p>Your Tasks, Your Notes, One Place</p>
-                    <div class="project-tags">
-                        <span>Vite</span>
-                        <span>React</span>
-                        <span>GitHub</span>
-                    </div>
-                    <a href="https://prav10140.github.io/REACT_TO_DO/" class="project-link">View Project</a>
-                </div>
-            </div>
 
-            <div class="project-card" data-tilt data-tilt-max="10">
-                <div class="project-content">
-                    <h3>SMART NOISE DETECTION</h3>
-                    <p> HARDWAARE + SOFTWARE </p>
-                    <div class="project-tags">
-                        <span>ESP32</span>
-                        <span>SENSOR</span>
-                        <span>REACT</span>
+                <div class="table-row hover-target">
+                    <div class="col-name">
+                        <h3>CodeChef C++ Solutions</h3>
+                        <p>See the solution of codechef question (500-800)-Diffculty level</p>
+                        <div class="hover-reveal-img" style="background-image: url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2069&auto=format&fit=crop');"></div>
                     </div>
-                    <a href="https://devpost.com/software/soundsnap-gjbtrm" class="project-link">View Project</a>
+                    <div class="col-tech">
+                        <span class="tag">C++</span>
+                        <span class="tag">DSA</span>
+                    </div>
+                    <div class="col-type">Problem Solving</div>
+                    <div class="col-link"><a href="https://prav10140.github.io/CODECHEF/"><i class="fas fa-arrow-right"></i></a></div>
                 </div>
-            </div>
-            
-            <div class="project-card" data-tilt data-tilt-max="10">
-                <div class="project-content">
-                    <h3>MathMentor</h3>
-                    <p>Ask Any Mathmatics Question</p>
-                    <div class="project-tags">
-                        <span>HTLM</span>
-                        <span>REALTIME DATABASE</span>
-                        <span>FIREBASE</span>
-                        <span>CSS</span>
-                        <span>API USE</span>
+
+                <div class="table-row hover-target">
+                    <div class="col-name">
+                        <h3>ReactNote</h3>
+                        <p>Your Tasks, Your Notes, One Place</p>
+                        <div class="hover-reveal-img" style="background-image: url('https://images.unsplash.com/photo-1664575602554-2087b04935a5?q=80&w=2070&auto=format&fit=crop');"></div>
                     </div>
-                    <a href="https://prav10140.github.io/AI_PRAV/" class="project-link">View Project</a>
+                    <div class="col-tech">
+                        <span class="tag">Vite</span>
+                        <span class="tag">React</span>
+                    </div>
+                    <div class="col-type">Productivity</div>
+                    <div class="col-link"><a href="https://prav10140.github.io/REACT_TO_DO/"><i class="fas fa-arrow-right"></i></a></div>
+                </div>
+
+                <div class="table-row hover-target">
+                    <div class="col-name">
+                        <h3>Smart Noise Detection</h3>
+                        <div class="hover-reveal-img" style="background-image: url('https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=2070&auto=format&fit=crop');"></div>
+                    </div>
+                    <div class="col-tech">
+                        <span class="tag">ESP32</span>
+                        <span class="tag">Sensors</span>
+                    </div>
+                    <div class="col-type">Hardware + Soft</div>
+                    <div class="col-link"><span class="locked-text">COMING SOON</span></div>
+                </div>
+
+                <div class="table-row hover-target">
+                    <div class="col-name">
+                        <h3>MathMentor</h3>
+                        <p>Ask Any Mathmatics Question</p>
+                        <div class="hover-reveal-img" style="background-image: url('https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=2070&auto=format&fit=crop');"></div>
+                    </div>
+                    <div class="col-tech">
+                        <span class="tag">HTLM</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">Realtime Database</span>
+                    </div>
+                    <div class="col-type">Firebase Use</div>
+                    <div class="col-link"><a href="https://prav10140.github.io/AI_PRAV/"><i class="fas fa-arrow-right"></i></a></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-idx">02</span>
+                <h2>Student</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-img-col">
+                    <div class="profile-frame">
+                        <img src="praveen.jpg" alt="Praveen Patel">
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <p class="lead">I combine growing knowledge of technology with design principles to build solutions that are simple and effective.</p>
+                    <p class="body">As a beginner in design and development, I am passionate about exploring new trends and experimenting with innovative ideas. While I haven't learned everything yet, I am in the process of growing, improving, and continuously expanding my knowledge.</p>
+                    
+                    <div class="skills-grid">
+                        <div>
+                            <h4>CORE</h4>
+                            <ul>
+                                <li>C / C++</li>
+                                <li>Python</li>
+                                <li>MATLAB</li>
+                                <li>Data Structures</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>DEV & IOT</h4>
+                            <ul>
+                                <li>Arduino / ESP32</li>
+                                <li>HTML / CSS</li>
+                                <li>React / Vite</li>
+                                <li>Problem Solving</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn-outline hover-target">DOWNLOAD RESUME</a>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <section id="about" class="about">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-container">
-          <div class="about-image-container">
-              <div class="about-image-wrapper">
-                  <img src="praveen.jpg" alt="Praveen Patel" class="about-image">
-                  <div class="image-overlay"></div>
-              </div>
-              <div class="about-social">
-                  <a href="tel:+919893423647" class="social-link"><i class="fas fa-phone"></i></a>
-                  <a href="https://www.linkedin.com/in/praveen-kumar-patel-4939b8325" class="social-link"><i class="fab fa-linkedin"></i></a>
-                  <a href="mailto:prav9406@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-                  <a href="https://www.instagram.com/praveenpatel051983?igsh=aTJ4ZThwZnN6cGVu" class="social-link"><i class="fab fa-instagram"></i></a>
-              </div>
-          </div>
-          <div class="about-content">
-              <h3 class="about-name">Praveen Patel</h3>
-              <h4 class="about-title">Pursuing Electronics & Communication Engineering Student From VIT BHOPAL University</h4>
-              <p>As a beginner in design and development, I am excited to learn and create digital experiences that make an impact. I combine my growing knowledge of technology with design principles to build solutions that are simple, effective, and user-friendly. I am passionate about exploring new trends, refining my skills, and experimenting with innovative ideas to craft intuitive and visually appealing interfaces. While I haven't learned everything yet, I am in the process of growing, improving, and continuously expanding my knowledge to build better digital experiences</p>
-              
-              
-              <div class="about-details">
-                  <div class="about-detail">
-                      <span class="detail-label"><i class="fas fa-graduation-cap"></i> Education:</span>
-                      <span class="detail-value">Pursuing Electronics & Communication Engineering Student From VIT BHOPAL University</span>
-                  </div>
-                  <div class="about-detail">
-                      <span class="detail-label"><i class="fas fa-map-marker-alt"></i> Location:</span>
-                      <span class="detail-value">Indore, India</span>
-                  </div>
-                  <div class="about-detail">
-                      <span class="detail-label"><i class="fas fa-envelope"></i> Email:</span>
-                      <span class="detail-value">prav9406@gmail.com</span>
-                  </div>
-              </div>
-              
-              <h4 class="skills-title">My Skills</h4>
-              <div class="skills">
-                  <div class="skill">Arduino</div>
-                  
-                  <div class="skill">Problem Solving</div>
-                  <div class="skill">C/C++</div>
-                  <div class="skill">Python</div>
-                  <div class="skill">MATLAB</div>
-                  <div class="skill">IoT</div>
-                  <div class="skill">HTML/CSS</div>
-              </div>
-              
-              <a href="#" class="resume-button">Download Resume <i class="fas fa-download"></i></a>
-          </div>
-      </div>
-  </section>
-
-    <section id="contact" class="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <p>prav9406@gmail.com</p>
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-cta">
+                <p>HAVE AN IDEA?</p>
+                <a href="mailto:prav9406@gmail.com" class="giant-link hover-target">LET'S TALK</a>
+            </div>
+            <div class="footer-bottom">
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/praveen-kumar-patel-4939b8325" class="hover-target">LINKEDIN</a>
+                    <a href="https://www.instagram.com/praveenpatel051983?igsh=aTJ4ZThwZnN6cGVu" class="hover-target">INSTAGRAM</a>
+                    <a href="tel:+919893423647" class="hover-target">+91 98934 23647</a>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <p>+91 9893423647</p>
-                </div>
-                <div class="social-icons">
-                    <a href="mailto:prav9406@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.instagram.com/praveenpatel051983?igsh=aTJ4ZThwZnN6cGVu" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/praveen-kumar-patel-4939b8325" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                    <a href="tel:+919893423647" class="social-icon"><i class="fas fa-phone"></i></a>
+                <div class="copyright">
+                    &copy; 2025 PRAVEEN PATEL.
                 </div>
             </div>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
         </div>
-    </section>
-
-
-    <footer>
-        <p>&copy; 2024 Praveen Patel. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
