@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PCB Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: #f6f6f6;
+      color: #111;
+    }
+
+    header {
+      padding: 30px 60px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h2 {
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 60px 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 40px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+      transform-style: preserve-3d;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:hover {
+      transform: rotateX(5deg) rotateY(-5deg);
+      box-shadow: 0 60px 120px rgba(0,0,0,0.12);
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 36px;
+    }
+
+    p {
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .tags span {
+      display: inline-block;
+      border: 1px solid #ddd;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-right: 8px;
+    }
+
+    img {
+      width: 100%;
+      margin-top: 35px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+    }
+
+    .download {
+      margin-top: 30px;
+    }
+
+    .download a {
+      display: inline-block;
+      padding: 14px 30px;
+      background: black;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    .download a:hover {
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>[ PRAVEEN_PATEL ]</h2>
+  <span>PROJECTS</span>
+</header>
+
+<div class="container">
+  <div class="card">
+
+    <h1>5V Regulated Power Supply Module</h1>
+    <p>PCB Design using EasyEDA • Core Electronics</p>
+
+    <div class="tags">
+      <span>PCB</span>
+      <span>EasyEDA</span>
+      <span>Hardware</span>
+      <span>Electronics</span>
+    </div>
+
+    <!-- 🔽 PCB IMAGE (RAW GITHUB URL) -->
+    <img src="PASTE_IMAGE_RAW_URL_HERE" alt="PCB Design">
+
+    <!-- 🔽 ZIP DOWNLOAD (RAW GITHUB URL) -->
+    <div class="download">
+      <a href="PASTE_ZIP_RAW_URL_HERE" download>
+        Download Gerber / PCB Files
+      </a>
+    </div>
+
+    <footer>
+      Designed & Developed by Praveen Patel
+    </footer>
+
+  </div>
+</div>
+
+</body>
+</html>
